@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linda Haar & Nagelstylist — Helenaveen</title>
+  <meta name="description" content="Linda Haar & Nagelstylist in Helenaveen. Persoonlijke aandacht voor haar en nagels. Maak vandaag nog een afspraak!">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #c6a681;
+      --gold-light: #d4b999;
+      --gold-bg: #f9f5ef;
+      --grey: #6b6b6b;
+      --grey-light: #999;
+      --text: #3a3a3a;
+      --white: #ffffff;
+      --section-bg: #faf8f5;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Open Sans', system-ui, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      border-bottom: 1px solid #eee;
+    }
+
+    nav .nav-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 2rem;
+    }
+
+    nav .logo-small {
+      height: 40px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--grey);
+      font-size: 0.9rem;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--gold); }
+
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('iStock_000057566652_Full.jpg') center/cover no-repeat;
+      filter: brightness(0.3);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      color: var(--white);
+      padding: 2rem;
+    }
+
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero h1 span {
+      color: var(--white);
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 2.5rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2.5rem;
+      border: 2px solid var(--gold-light);
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
+
+    .btn:hover {
+      background: var(--gold-light);
+      color: var(--white);
+    }
+
+    .btn-solid {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--white);
+    }
+
+    .btn-solid:hover {
+      background: var(--gold-light);
+      border-color: var(--gold-light);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    section:nth-child(even) {
+      background: var(--section-bg);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--text);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title .line {
+      width: 50px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0 auto;
+    }
+
+    /* WELKOM */
+    .welkom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .welkom-text p {
+      margin-bottom: 1.5rem;
+      color: var(--grey);
+    }
+
+    .welkom-features {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .welkom-features li {
+      padding: 0.4rem 0;
+      color: var(--grey);
+    }
+
+    .welkom-features li::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      margin-right: 0.8rem;
+    }
+
+    .welkom-image {
+      position: relative;
+    }
+
+    .welkom-image img {
+      width: 100%;
+      filter: grayscale(20%);
+    }
+
+    .welkom-image::after {
+      content: '';
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      right: -1rem;
+      bottom: -1rem;
+      border: 2px solid var(--gold);
+      z-index: -1;
+    }
+
+    /* OVER */
+    .over-content {
+      max-width: 650px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .over-content p {
+      color: var(--grey);
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    .over-content .quote {
+      font-style: italic;
+      color: var(--gold);
+      font-size: 1.2rem;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid #e5e0d8;
+    }
+
+    /* BEHANDELINGEN */
+    .behandelingen-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .behandeling-card {
+      background: var(--white);
+      padding: 2.5rem;
+      border: 1px solid #ece7df;
+      text-align: center;
+    }
+
+    .behandeling-card h3 {
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.03em;
+    }
+
+    .behandeling-card .card-line {
+      width: 30px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0.8rem auto 1.5rem;
+    }
+
+    .behandeling-card ul {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .behandeling-card li {
+      padding: 0.35rem 0;
+      color: var(--grey);
+    }
+
+    .behandeling-card p {
+      color: var(--grey-light);
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    /* OPENINGSTIJDEN */
+    .tijden-wrapper {
+      max-width: 500px;
+      margin: 0 auto;
+      background: var(--white);
+      padding: 2.5rem;
+      border: 1px solid #ece7df;
+    }
+
+    .tijden-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid #f0ebe4;
+      color: var(--grey);
+    }
+
+    .tijden-row:last-of-type {
+      border-bottom: none;
+    }
+
+    .tijden-row .dag {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .tijden-note {
+      text-align: center;
+      margin-top: 1.5rem;
+      color: var(--grey-light);
+      font-style: italic;
+      font-size: 0.9rem;
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--gold-bg);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--gold);
+      font-size: 1.1rem;
+    }
+
+    .contact-item p {
+      color: var(--grey);
+    }
+
+    .contact-item a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .contact-item a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-map {
+      width: 100%;
+      height: 300px;
+      border: 1px solid #ece7df;
+    }
+
+    .contact-map iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--text);
+      text-align: center;
+      padding: 2rem 2rem;
+    }
+
+    .footer-socials {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .footer-socials a {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .footer-socials a:hover {
+      background: var(--gold);
+    }
+
+    .footer-socials svg {
+      width: 20px;
+      height: 20px;
+      fill: rgba(255, 255, 255, 0.7);
+    }
+
+    .footer-socials a:hover svg {
+      fill: white;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { display: none; }
+
+      .hero h1 { font-size: 2rem; }
+
+      .welkom-grid,
+      .behandelingen-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .welkom-image { order: -1; }
+
+      .welkom-image::after { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <img src="logo-hero.png" alt="Linda" class="logo-small">
+      <ul>
+        <li><a href="#welkom">Home</a></li>
+        <li><a href="#over">Over Linda</a></li>
+        <li><a href="#behandelingen">Behandelingen</a></li>
+        <li><a href="#openingstijden">Openingstijden</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <img src="logo-hero.png" alt="Linda haar & nagelstylist" style="width: 150px; margin-bottom: 2rem;">
+      <h1>Haar <span>&</span> Nagelstylist</h1>
+      <p>Persoonlijke aandacht en kwaliteit in Helenaveen</p>
+      <a href="#contact" class="btn">Maak een afspraak</a>
+    </div>
+  </section>
+
+  <!-- WELKOM -->
+  <section id="welkom">
+    <div class="container">
+      <div class="welkom-grid">
+        <div class="welkom-text">
+          <div class="section-title" style="text-align:left">
+            <h2>Welkom</h2>
+            <div class="line" style="margin:0"></div>
+          </div>
+          <p>Bij Linda Haar & Nagelstylist in Helenaveen staat persoonlijke aandacht en kwaliteit centraal. Of je nu komt voor mooi verzorgde nagels of een frisse nieuwe look voor je haar, je bent hier in goede handen.</p>
+          <p>In de gezellige salon wordt gewerkt met professionele producten en veel aandacht voor jouw wensen. Samen kijken we naar wat het beste bij jou past.</p>
+          <ul class="welkom-features">
+            <li>Persoonlijke service</li>
+            <li>Professionele behandelingen</li>
+            <li>Rustige en gezellige salon</li>
+            <li>Afspraak op maat</li>
+          </ul>
+        </div>
+        <div class="welkom-image">
+          <img src="adver.jpg" alt="Linda Haar & Nagelstylist">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OVER LINDA -->
+  <section id="over">
+    <div class="container">
+      <div class="section-title">
+        <h2>Over Linda</h2>
+        <div class="line"></div>
+      </div>
+      <div class="over-content">
+        <p>Mijn naam is Linda en ik ben de eigenaresse van Linda Haar & Nagelstylist in Helenaveen.</p>
+        <p>Met veel plezier werk ik dagelijks aan het verzorgen van haar en nagels van mijn klanten. Persoonlijk contact vind ik belangrijk. Ik neem de tijd voor iedere klant zodat iedereen met een tevreden gevoel de salon verlaat.</p>
+        <p class="quote">"Mijn doel is dat jij je mooi, verzorgd en zelfverzekerd voelt."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEHANDELINGEN -->
+  <section id="behandelingen">
+    <div class="container">
+      <div class="section-title">
+        <h2>Behandelingen</h2>
+        <div class="line"></div>
+      </div>
+      <div class="behandelingen-grid">
+        <div class="behandeling-card">
+          <h3>Haarstyling</h3>
+          <div class="card-line"></div>
+          <ul>
+            <li>Knippen + föhnen</li>
+            <li>Kidz Knip</li>
+            <li>Kleuren / Highlights / Lowlights</li>
+            <li>Opsteken</li>
+            <li>Wenkbrauwen epileren / verven</li>
+          </ul>
+        </div>
+        <div class="behandeling-card">
+          <h3>Nagelstyling</h3>
+          <div class="card-line"></div>
+          <ul>
+            <li>Nieuwe set gel</li>
+            <li>Nabehandeling</li>
+            <li>Gellak op kunstnagel</li>
+            <li>Gellak op natuurlijke nagel</li>
+            <li>Chrome, glitter of stempel</li>
+            <li>Verwijderen van gelnagels</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPENINGSTIJDEN -->
+  <section id="openingstijden">
+    <div class="container">
+      <div class="section-title">
+        <h2>Openingstijden</h2>
+        <div class="line"></div>
+      </div>
+      <div class="tijden-wrapper">
+        <div class="tijden-row">
+          <span class="dag">Dinsdag</span>
+          <span>09:00 – 21:00</span>
+        </div>
+        <div class="tijden-row">
+          <span class="dag">Donderdag</span>
+          <span>09:00 – 21:00</span>
+        </div>
+        <div class="tijden-row">
+          <span class="dag">Vrijdag</span>
+          <span>09:00 – 21:00</span>
+        </div>
+        <div class="tijden-row">
+          <span class="dag">Zaterdag</span>
+          <span>08:00 – 14:00</span>
+        </div>
+      </div>
+      <p class="tijden-note">Andere tijden eventueel in overleg</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact</h2>
+        <div class="line"></div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Linda Haar & Nagelstylist</h3>
+          <div class="contact-item">
+            <div class="contact-icon">&#9906;</div>
+            <div>
+              <p>Soemeersingel 15<br>5759 RB Helenaveen</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">&#9742;</div>
+            <div>
+              <p><a href="tel:+31651831811">Bel voor een afspraak — 06 51 83 18 11</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="width:20px;height:20px"><path d="M16.004 0h-.008C7.174 0 .187 6.986.187 15.82c0 3.46 1.1 6.671 2.97 9.293L1.047 32l7.12-2.276a15.71 15.71 0 007.837 2.076c8.835 0 15.822-6.986 15.822-15.82S24.839 0 16.004 0zm9.424 22.358c-.392 1.107-1.942 2.026-3.2 2.295-.862.18-1.987.324-5.776-1.242-4.847-2.003-7.968-6.918-8.208-7.237-.231-.32-1.942-2.588-1.942-4.936 0-2.348 1.222-3.504 1.693-3.984.392-.4 1.026-.588 1.634-.588.198 0 .375.01.534.018.471.02.707.048 1.018.79.392.928 1.342 3.276 1.462 3.516.12.24.24.56.08.88-.151.328-.28.528-.52.82-.24.288-.492.511-.732.8-.22.26-.468.538-.192.998.28.46 1.24 2.048 2.668 3.316 1.838 1.632 3.337 2.16 3.858 2.388.392.17.858.131 1.148-.179.368-.4.821-1.063 1.282-1.718.328-.468.742-.528 1.174-.348.44.172 2.78 1.312 3.258 1.55.471.24.791.36.908.556.12.2.12 1.128-.272 2.235z"/></svg>
+            </div>
+            <div>
+              <p><a href="https://wa.me/31651831811">WhatsApp voor een afspraak</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="contact-map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1128!2d5.915701!3d51.3906347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c73841e0902bc3%3A0xba5014601bba6b9a!2sLinda+haar+%26+nagelstylist!5e0!3m2!1snl!2snl!4v1"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-socials">
+      <a href="https://www.facebook.com/lindahaarennagelstylist/" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/linda_haar.en.nagelstylist/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+    </div>
+  </footer>
+
+
+
+</body>
+</html>
